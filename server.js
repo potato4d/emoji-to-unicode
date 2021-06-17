@@ -35,5 +35,18 @@ app.get('/decode/:emoji', (req, res) => {
   return
 })
 
+app.get('/redirect/:emoji', (req, res) => {
+  const { emoji } = req.params
+  
+  if (!emoji) {
+    res.status(400)
+    res.send('Error')
+    return
+  }
+  const code = emojiToUnicode(emoji)
+  res.redirect(`https://github.com/twitter/twemoji/blob/master/assets/72x72/${code}.png`)
+  return
+})
+
 
 app.listen(process.env.PORT)

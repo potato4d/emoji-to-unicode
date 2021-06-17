@@ -18,11 +18,11 @@ function emojiToUnicode (emoji) {
 };
 
 app.get('/', (req, res) => {
-  res.send('Please access to `/:emoji`. ')
+  res.send('Please access to `/decode/:emoji`. ')
   return
 })
 
-app.get('/:emoji', (req, res) => {
+app.get('/decode/:emoji', (req, res) => {
   const { emoji } = req.params
   
   if (!emoji) {
